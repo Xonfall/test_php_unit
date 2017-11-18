@@ -12,8 +12,6 @@ class Exchange
 
     const DATE_FORMAT = 'Y-m-d H:i:s';
 
-
-
     public function __construct(User $owner, User $receiver, Product $product, $debut, $fin)
     {
         $this->owner = $owner;
@@ -38,7 +36,7 @@ class Exchange
                 && $this->receiver->isValid()
                 && $this->product->isValid())
             {
-                if (!$this->receiver->checkAge())
+                if ($this->receiver->checkAge())
                 {
                     $this->email->sendEmail($this->receiver, 'Vous êtes mineur');
                 }
